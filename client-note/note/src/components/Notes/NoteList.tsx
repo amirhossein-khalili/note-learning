@@ -24,11 +24,11 @@ const NoteList: React.FC = () => {
 
   return (
     <Grid templateColumns="repeat(auto-fill, minmax(300px, 1fr))" gap={6}>
-      {notes.map((note, index) => (
-        <GridItem key={index}>
+      {notes.map((note) => (
+        <GridItem key={note._id}>
           <Box m="auto" p="10">
             <Note
-              key={note._id}
+              noteId={note._id}
               title={note.title}
               content={note.content}
               noteBackground={note.noteBackground}

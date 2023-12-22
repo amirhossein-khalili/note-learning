@@ -8,6 +8,7 @@ import {
   CardBody,
   CardFooter,
   ButtonGroup,
+  useToast,
 } from '@chakra-ui/react';
 import { DeleteIcon, EditIcon, ViewIcon } from '@chakra-ui/icons';
 import axios from 'axios';
@@ -19,12 +20,26 @@ interface NoteProps {
 }
 
 const Note: React.FC<NoteProps> = ({ title, content, noteBackground = 'white', noteId }) => {
+  const toast = useToast();
   const handleDeleteClick = async (noteId: string) => {
     try {
       await axios.delete(`http://localhost:5000/api/v1/notes/${noteId}`);
       console.log(`Note with ID ${noteId} deleted successfully.`);
+      toast({
+        title: 'یادداشت حذف شد!',
+        status: 'success',
+        duration: 3000,
+        isClosable: true,
+      });
+      window.location.reload();
     } catch (error) {
       console.error(`Error deleting note with ID ${noteId}:`, error);
+      toast({
+        title: 'خطا در حذف یادداشت!',
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+      });
     }
   };
 
