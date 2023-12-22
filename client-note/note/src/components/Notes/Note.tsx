@@ -28,7 +28,7 @@ const Note: React.FC<NoteProps> = ({ title, content, noteBackground = 'white', n
       toast({
         title: 'یادداشت حذف شد!',
         status: 'success',
-        duration: 3000,
+        duration: 300,
         isClosable: true,
       });
       window.location.reload();
@@ -37,7 +37,7 @@ const Note: React.FC<NoteProps> = ({ title, content, noteBackground = 'white', n
       toast({
         title: 'خطا در حذف یادداشت!',
         status: 'error',
-        duration: 3000,
+        duration: 300,
         isClosable: true,
       });
     }
@@ -48,13 +48,13 @@ const Note: React.FC<NoteProps> = ({ title, content, noteBackground = 'white', n
       <CardBody>
         <Stack mt="6" spacing="3">
           <Heading size="md">{title}</Heading>
-          <Text>{content.slice(0, 150)}....</Text>
+          <Text>{content.slice(0, 30)}....</Text>
         </Stack>
       </CardBody>
       <Divider />
       <CardFooter>
         <ButtonGroup spacing="2">
-          <Button color="blue.600">
+          <Button color="blue.600" onClick={() => (window.location.href = `/note/edit/${noteId}`)}>
             <EditIcon />
           </Button>
           <Button color="red.600" onClick={() => handleDeleteClick(noteId)}>
