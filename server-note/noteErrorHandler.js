@@ -11,11 +11,13 @@ const newNoteSchema = Joi.object({
     'string.empty': 'محتوا نمی‌تواند خالی باشد',
     'any.required': 'محتوا یک فیلد الزامی است',
   }),
-  noteBackground: Joi.string().required().messages({
-    'string.base': 'رنک بکگراند نوت باید یک رشته باشد',
-    'string.empty': 'رنک بکگراند نوت نمی‌تواند خالی باشد',
-    'any.required': 'رنک بکگراند نوت یک فیلد الزامی است',
-  }),
+  noteBackground: Joi.string()
+    // .required()
+    .messages({
+      'string.base': 'رنک بکگراند نوت باید یک رشته باشد',
+      'string.empty': 'رنک بکگراند نوت نمی‌تواند خالی باشد',
+      // 'any.required': 'رنک بکگراند نوت یک فیلد الزامی است',
+    }),
 });
 
 module.exports = newNoteSchema;
