@@ -2,16 +2,14 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const ApiError = require('./utils/ApiError');
-var cors = require('cors')
-
-
+var cors = require('cors');
 
 const noteRoutes = require('./noteRoutes');
-
+const todoRoutes = require('./todo/todoRoutes');
 // Middewares
 app.use(express.json({ limit: '100mb' }));
 app.use(express.urlencoded({ limit: '100mb', extended: true }));
-app.use(cors())
+app.use(cors());
 
 // Routes
 app.get('/status', (req, res) => {
@@ -24,6 +22,7 @@ app.get('/status', (req, res) => {
 
 // APIs
 app.use('/api/v1/notes', noteRoutes);
+app.use('/api/v1/todos', todoRoutes);
 
 // Handle 404
 app.all('*', (req, res, next) => {
