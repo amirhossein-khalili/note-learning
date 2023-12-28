@@ -39,16 +39,4 @@ app.use((err, req, res, next) => {
   });
 });
 
-const path = require('path');
-const expressListEndpoints = require('express-list-endpoints');
-const fs = require('fs');
-const endpoints = expressListEndpoints(app);
-const csvFilePath = path.join(__dirname, 'endpoints.csv');
-const csvContent = endpoints
-  .map((route) => {
-    return `${route.path},${route.methods.join(',')}`;
-  })
-  .join('\n');
-fs.writeFileSync(csvFilePath, 'Path,Methods\n' + csvContent);
-
 module.exports = app;
