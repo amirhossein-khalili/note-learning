@@ -1,30 +1,14 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import Note from './Note';
-import { GridItem, Grid, Box, Button } from '@chakra-ui/react';
-import mainUrl from '../../../api.config';
+import { GridItem, Grid, Box, Button, Text } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
+import useGetNotes from '../../hooks/NoteHooks/useGetNotes';
 
 const NoteList: React.FC = () => {
-  const [notes, setNotes] = useState<
-    { title: string; content: string; _id: string; noteBackground: string }[]
-  >([]);
-
-  useEffect(() => {
-    const fetchNotes = async () => {
-      try {
-        const response = await axios.get(`${mainUrl}/notes`);
-        setNotes(response.data.notes);
-      } catch (error) {
-        console.error('Error fetching notes:', error);
-      }
-    };
-
-    fetchNotes();
-  }, []);
-
+  const { notes, error } = useGetNotes();
   return (
     <>
+      {error && <Text>{error}</Text>}
       <Link to="/notes/newNote">
         <Button colorScheme="green">ایجاد یادداشت جدید</Button>
       </Link>
