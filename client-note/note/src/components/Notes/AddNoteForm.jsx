@@ -1,25 +1,50 @@
 import React, { useState } from 'react';
-import { Box, Input, Textarea, Button } from '@chakra-ui/react';
+import { Box, Input, Textarea, Button, Alert, AlertIcon } from '@chakra-ui/react';
 import axios from 'axios';
 import mainUrl from '../../../api.config';
-import { InfoAlert, ErrorAlert } from '../Alerts';
+import { useNavigate } from 'react-router-dom';
 
 const AddNoteForm = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [alert, setAlert] = useState(null);
+  const navigate = useNavigate();
 
   const handleAddNote = async () => {
     try {
       const response = await axios.post(`${mainUrl}/notes`, { title, content });
-      console.log(response.data);
-      if (response.data.status === 201) {
-        <InfoAlert />;
-        
+      if (response.data.status === 'success') {
+        setAlert(
+          <Alert status="success">
+            <AlertIcon />
+            note added successfully
+          </Alert>
+        );
+        setTimeout(() => {
+          setAlert(null);
+        }, 3000);
+        navigate(`/notes`);
       } else {
-        <ErrorAlert />;
+        setAlert(
+          <Alert status="error">
+            <AlertIcon />
+            note adding failed please try again later
+          </Alert>
+        );
+        setTimeout(() => {
+          setAlert(null);
+        }, 3000);
       }
     } catch (error) {
-      <ErrorAlert />;
+      setAlert(
+        <Alert status="error">
+          <AlertIcon />
+          note adding failed please try again later
+        </Alert>
+      );
+      setTimeout(() => {
+        setAlert(null);
+      }, 3000);
     }
   };
 
