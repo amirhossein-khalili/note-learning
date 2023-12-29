@@ -9,7 +9,6 @@ function validateRequest(schema) {
       if (error) {
         return res.status(412).json(error.details[0].message);
       }
-      console.log('validateRequest');
       return next();
     } catch (error) {
       console.log(error);
