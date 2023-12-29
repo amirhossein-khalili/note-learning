@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Box, Flex, Spacer, Heading, Image } from '@chakra-ui/react';
 import { EmailIcon } from '@chakra-ui/icons';
 
-const Header: React.FC = () => {
+const NavBar: React.FC = () => {
   return (
     <Box p="4" bg="green.300" color="white">
       <Flex alignItems="center">
@@ -20,4 +20,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header;
+export default NavBar;
