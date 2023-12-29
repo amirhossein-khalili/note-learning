@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Input, Textarea, Button } from '@chakra-ui/react';
+import { Box, Input, Textarea, Button, Alert, AlertIcon } from '@chakra-ui/react';
 import useAddNote from '../../hooks/NoteHooks/useAddNote';
 
 const AddNoteForm: React.FC = () => {
@@ -13,7 +13,12 @@ const AddNoteForm: React.FC = () => {
 
   return (
     <Box>
-      {alert && <div>{alert}</div>}
+      {alert && (
+        <Alert status={alert.status === 'success' ? 'success' : 'error'}>
+          <AlertIcon />
+          {alert.message}
+        </Alert>
+      )}
       <Input placeholder="عنوان یادداشت" value={title} onChange={(e) => setTitle(e.target.value)} />
       <Textarea
         placeholder="متن یادداشت"
