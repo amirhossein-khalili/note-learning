@@ -21,7 +21,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/components/Notes/NoteRoute.tsx"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/components/Notes/NoteRoute.tsx", "src/hooks/NoteHooks/useAddNote.ts"],
   "exclude": ["node_modules"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
