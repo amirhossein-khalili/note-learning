@@ -11,7 +11,6 @@ const Header: React.FC = () => {
           <Image src="/logo/logo_transparent.svg" alt="Logo" boxSize="100px" mr="2" />
         </Link>
         <Heading size="md">this is test for header </Heading>
-
         <Spacer />
         <Link to="/notes">
           <EmailIcon aria-label="Notes" color="whiteAlpha" ml={2} boxSize={7} />
