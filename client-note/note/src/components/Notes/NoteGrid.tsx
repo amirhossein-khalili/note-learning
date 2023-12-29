@@ -1,5 +1,5 @@
 import React from 'react';
-import Note from './Note';
+import NoteCard from './NoteCard';
 import { GridItem, Grid, Box, Button, Text } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import useGetNotes from '../../hooks/NoteHooks/useGetNotes';
@@ -16,7 +16,7 @@ const NoteGrid: React.FC = () => {
         {notes.map((note) => (
           <GridItem key={note._id}>
             <Box m="auto" p="10">
-              <Note
+              <NoteCard
                 noteId={note._id}
                 title={note.title}
                 content={note.content}

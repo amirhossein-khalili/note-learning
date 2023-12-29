@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Divider,
   Heading,
@@ -19,7 +20,7 @@ interface NoteProps {
   noteId: string;
 }
 
-const Note: React.FC<NoteProps> = ({ title, content, noteBackground = 'white', noteId }) => {
+const NoteCard: React.FC<NoteProps> = ({ title, content, noteBackground = 'white', noteId }) => {
   const toast = useToast();
   const handleDeleteClick = async (noteId: string) => {
     try {
@@ -69,4 +70,4 @@ const Note: React.FC<NoteProps> = ({ title, content, noteBackground = 'white', n
   );
 };
 
-export default Note;
+export default NoteCard;
