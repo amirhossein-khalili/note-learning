@@ -4,10 +4,10 @@ import axios from 'axios';
 import mainUrl from '../../../api.config';
 import { useNavigate } from 'react-router-dom';
 
-const AddNoteForm = () => {
+const AddNoteForm: React.FC = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [alert, setAlert] = useState(null);
+  const [alert, setAlert] = useState<React.ReactNode | null>(null);
   const navigate = useNavigate();
 
   const handleAddNote = async () => {
@@ -23,7 +23,9 @@ const AddNoteForm = () => {
         setTimeout(() => {
           setAlert(null);
         }, 3000);
-        navigate(`/notes`);
+        setTimeout(() => {
+          navigate(`/notes`);
+        }, 4000);
       } else {
         setAlert(
           <Alert status="error">
@@ -50,6 +52,7 @@ const AddNoteForm = () => {
 
   return (
     <Box>
+      {alert && <div>{alert}</div>}
       <Input placeholder="عنوان یادداشت" value={title} onChange={(e) => setTitle(e.target.value)} />
       <Textarea
         placeholder="متن یادداشت"
