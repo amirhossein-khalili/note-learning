@@ -12,7 +12,9 @@ const NavBar: React.FC = () => {
       <Link to="/">
         <Image src={logo} alt="Logo" boxSize="100px" mr="2" />
       </Link>
-      <Heading size="md">this is test for header </Heading>
+      <Link to="/todos">
+        <Heading size="md">this is test for header </Heading>
+      </Link>
       <Link to="/notes">
         <EmailIcon aria-label="Notes" color="whiteAlpha" ml={2} boxSize={7} />
       </Link>

@@ -8,6 +8,7 @@ import NavBar from './components/NavBar';
 import NoteGrid from './components/Notes/NoteGrid';
 import AddNoteForm from './components/Notes/AddNoteForm';
 // import NoteRoute from './components/Notes/NoteRoute';
+import TodoGrid from './components/Todo/TodoGrid';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Routes>
           <Route path="/notes/newNote" element={<AddNoteForm />} />
           <Route path="/notes" element={<NoteGrid />} />
+          <Route path="/todos" element={<TodoGrid />} />
           {/* <Route path='/notes' element={<NoteRoute />} /> */}
           <Route path="/" element={<Outlet />} />
         </Routes>
